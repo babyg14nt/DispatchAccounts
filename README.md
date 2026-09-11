@@ -1,6 +1,6 @@
 # IRONHAUL — Carrier Operations OS
 
-A production-grade operations, accounting and finance dashboard for freight
+A production-grade operations, accounting and finance dashboard for freight 
 trucking carriers. Dispatch loads, chase BOLs, run the factoring pipeline,
 generate itemized driver settlements, track maintenance and expenses, and watch
 a live P&L — all from one dark "dispatch console" UI.
