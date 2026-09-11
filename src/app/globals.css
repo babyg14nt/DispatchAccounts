@@ -1,0 +1,344 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   IRONHAUL OS — dark "dispatch console" design system
+   ------------------------------------------------------------------------- */
+:root {
+  --bg: #060608;
+  --panel: #0d0d12;
+  --line: rgba(255, 255, 255, 0.07);
+  --line-strong: rgba(255, 255, 255, 0.14);
+  --ink: #ecebf1;
+  --mute: #8e8e9a;
+  --faint: #5c5c68;
+  --amber: #f5a11b;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(1200px 500px at 8% -6%, rgba(245, 161, 27, 0.07), transparent 60%),
+    radial-gradient(900px 480px at 96% -4%, rgba(88, 111, 255, 0.05), transparent 55%),
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+  background-size: auto, auto, 56px 56px, 56px 56px;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(245, 161, 27, 0.32);
+  color: #fff;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  border: 2px solid var(--bg);
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 161, 27, 0.35);
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(245, 161, 27, 0.6);
+  outline-offset: 2px;
+}
+
+.mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* -------------------------------- Surfaces ------------------------------- */
+.card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.032), rgba(255, 255, 255, 0.014));
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+}
+.card-hover {
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:hover {
+  border-color: var(--line-strong);
+  box-shadow: 0 12px 40px -18px rgba(0, 0, 0, 0.8);
+}
+
+/* -------------------------------- Controls ------------------------------- */
+.input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8.5px 12px;
+  font-size: 13.5px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+}
+.input::placeholder {
+  color: var(--faint);
+}
+.input:focus {
+  border-color: rgba(245, 161, 27, 0.55);
+  box-shadow: 0 0 0 3px rgba(245, 161, 27, 0.13);
+  background: rgba(245, 161, 27, 0.03);
+}
+select.input {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238e8e9a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 14px;
+  padding-right: 32px;
+}
+select.input option {
+  background: #12121a;
+}
+input[type="date"].input::-webkit-calendar-picker-indicator {
+  filter: invert(0.65);
+  cursor: pointer;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  border-radius: 10px;
+  padding: 8.5px 15px;
+  transition: all 0.16s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  user-select: none;
+}
+.btn:disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+.btn:active {
+  transform: translateY(0.5px) scale(0.985);
+}
+.btn-primary {
+  background: linear-gradient(180deg, #ffc24d, #f59e0b);
+  color: #1c1302;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 8px 22px -10px rgba(245, 158, 11, 0.55);
+}
+.btn-primary:hover {
+  filter: brightness(1.07);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 10px 26px -10px rgba(245, 158, 11, 0.7);
+}
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--line);
+  color: #d6d6de;
+}
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--line-strong);
+}
+.btn-danger {
+  background: rgba(244, 63, 94, 0.12);
+  border-color: rgba(244, 63, 94, 0.3);
+  color: #fda4af;
+}
+.btn-danger:hover {
+  background: rgba(244, 63, 94, 0.22);
+}
+.btn-sm {
+  padding: 6px 11px;
+  font-size: 12px;
+  border-radius: 8px;
+  gap: 6px;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  color: var(--mute);
+  border: 1px solid transparent;
+  transition: all 0.14s ease;
+  cursor: pointer;
+}
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--ink);
+  border-color: var(--line);
+}
+.icon-btn.danger:hover {
+  background: rgba(244, 63, 94, 0.14);
+  color: #fda4af;
+  border-color: rgba(244, 63, 94, 0.3);
+}
+
+/* --------------------------------- Table --------------------------------- */
+.tbl {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+}
+.tbl thead th {
+  text-align: left;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-weight: 600;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(10, 10, 14, 0.6);
+  white-space: nowrap;
+}
+.tbl tbody td {
+  padding: 11px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+  color: #d9d9e1;
+  vertical-align: middle;
+}
+.tbl tbody tr {
+  transition: background 0.12s ease;
+}
+.tbl tbody tr:hover {
+  background: rgba(255, 255, 255, 0.026);
+}
+.tbl tr.clickable {
+  cursor: pointer;
+}
+
+/* -------------------------------- Pills ----------------------------------- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3.5px 9px;
+  border-radius: 999px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+.pill .dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: currentColor;
+}
+.tone-zinc { color: #a1a1aa; background: rgba(161, 161, 170, 0.1); border-color: rgba(161, 161, 170, 0.22); }
+.tone-sky { color: #7dd3fc; background: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.25); }
+.tone-amber { color: #fcd34d; background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.3); }
+.tone-emerald { color: #6ee7b7; background: rgba(16, 185, 129, 0.11); border-color: rgba(16, 185, 129, 0.28); }
+.tone-rose { color: #fda4af; background: rgba(244, 63, 94, 0.11); border-color: rgba(244, 63, 94, 0.28); }
+.tone-violet { color: #c4b5fd; background: rgba(139, 92, 246, 0.12); border-color: rgba(139, 92, 246, 0.3); }
+.tone-orange { color: #fdba74; background: rgba(249, 115, 22, 0.11); border-color: rgba(249, 115, 22, 0.28); }
+
+/* ------------------------------- Animations ------------------------------ */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise {
+  animation: rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fade-in {
+  animation: fadeIn 0.28s ease both;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.975); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.modal-in {
+  animation: modalIn 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.03) 25%, rgba(255, 255, 255, 0.07) 50%, rgba(255, 255, 255, 0.03) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s linear infinite;
+  border-radius: 10px;
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.82); }
+}
+.pulse-dot {
+  animation: pulseDot 1.8s ease-in-out infinite;
+}
+
+/* --------------------------- Recharts dark skin --------------------------- */
+.recharts-cartesian-axis-tick text {
+  fill: #71717c;
+  font-size: 10.5px;
+  font-family: var(--font-mono) !important;
+}
+.recharts-cartesian-grid line {
+  stroke: rgba(255, 255, 255, 0.05);
+}
+.recharts-tooltip-cursor {
+  fill: rgba(255, 255, 255, 0.04);
+}
+
+/* --------------------------------- Print --------------------------------- */
+@media print {
+  body.print-mode {
+    background: #fff !important;
+  }
+  body.print-mode * {
+    visibility: hidden;
+  }
+  body.print-mode .print-area,
+  body.print-mode .print-area * {
+    visibility: visible;
+  }
+  body.print-mode .print-area {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    background: #fff !important;
+    color: #111 !important;
+    padding: 24px !important;
+    border: none !important;
+  }
+  body.print-mode .print-area *,
+  body.print-mode .print-area {
+    color: #111 !important;
+    background: transparent !important;
+    border-color: #d9d9e0 !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+}
